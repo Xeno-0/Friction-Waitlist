@@ -99,7 +99,7 @@ export default function Features() {
 
     return (
         <section id="features" ref={containerRef} className="py-32 px-4 w-full bg-paper relative overflow-hidden">
-            <div className="max-w-6xl w-full flex flex-col gap-16">
+            <div className="max-w-6xl w-full mx-auto flex flex-col gap-16">
 
                 {/* Section Header */}
                 <div className="text-center mb-8">
