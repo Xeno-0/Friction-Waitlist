@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-void: #111111;
+  --color-spark: #FF4D00;
+  --color-paper: #F4F4F5;
+  --color-mist: #E4E4E7;
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-serif: "Newsreader", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Force custom cursor everywhere */
+  *,
+  *::before,
+  *::after {
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 2.5L11.8906 20.3906L14.7188 14.7188L20.3906 11.8906L5.5 2.5Z" fill="white" stroke="%23111111" stroke-width="1.5" stroke-linejoin="round" /></svg>'), auto !important;
+  }
+
+  body {
+    @apply bg-paper text-void font-sans antialiased selection:bg-spark selection:text-white;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Also override default pointer for links and buttons to maintain the custom feel */
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 2.5L11.8906 20.3906L14.7188 14.7188L20.3906 11.8906L5.5 2.5Z" fill="white" stroke="%23FF4D00" stroke-width="1.5" stroke-linejoin="round" /></svg>'), pointer;
+  }
+
+  /* Problem 1 Fix: The Spotlight as a true FIXED OVERLAY so it covers all sections */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    /* Adjusted opacity to be 'subtle' (0.15 instead of 0.8) */
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, transparent 80%);
+  }
+
+  /* Problem 2 Fix: Added the 'textured' effect requested for the Paper background */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    filter: contrast(150%) brightness(100%);
+  }
+}
+
+@layer utilities {
+  .tracking-tight-custom {
+    letter-spacing: -0.02em;
+  }
+
+}
+
+@keyframes pan-grid {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 40px;
+  }
+}
+
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  animation: pan-grid 3s linear infinite;
+}
+
+/* User provided Glitch effect substituted for the GSAP glitch */
+/* New Glitch effect for the "Loop" word */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: var(--color-void);
+  transition: color 0.2s;
+}
+
+.glitch-text:hover {
+  color: transparent;
+  /* Hide main text to show glitch layers */
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-text:hover::before {
+  opacity: 1;
+  color: #a855f7;
+  /* Secondary color (Purple) */
+  animation: glitch-anim 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.glitch-text:hover::after {
+  opacity: 1;
+  color: var(--color-void);
+  /* User preferred void black for the glitch layer */
+  animation: glitch-anim 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+@keyframes glitch-anim {
+  0% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+
+  20% {
+    transform: translate(-0.3rem, 0.15rem);
+    clip-path: inset(50% 0 20% 0);
+  }
+
+  40% {
+    transform: translate(0.15rem, -0.1rem);
+    clip-path: inset(20% 0 60% 0);
+  }
+
+  60% {
+    transform: translate(-0.25rem, 0.1rem);
+    clip-path: inset(80% 0 5% 0);
+  }
+
+  80% {
+    transform: translate(0.25rem, -0.15rem);
+    clip-path: inset(30% 0 45% 0);
+  }
+
+  100% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
