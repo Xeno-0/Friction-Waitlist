@@ -15,6 +15,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   /* Force custom cursor everywhere */
@@ -28,6 +29,7 @@
     @apply bg-paper text-void font-sans antialiased selection:bg-spark selection:text-white;
     position: relative;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   /* Also override default pointer for links and buttons to maintain the custom feel */
