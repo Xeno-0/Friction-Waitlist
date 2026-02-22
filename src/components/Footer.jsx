@@ -1,41 +1,34 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { useNotification } from '../lib/NotificationContext';
 
 export default function Footer() {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState("idle"); // idle, success, error
-    const [message, setMessage] = useState("");
+    const { showNotification } = useNotification();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!email) return;
 
         setLoading(true);
-        setStatus("idle");
-        setMessage("");
-
         try {
             const { error } = await supabase
                 .from('waitlist')
                 .insert([{ email }]);
 
             if (error) {
-                if (error.code === '23505') { // Postgres unique violation code
-                    setStatus('error');
-                    setMessage('Already on the list.');
+                if (error.code === '23505') {
+                    showNotification('You are already on the list.', 'error');
                 } else {
-                    setStatus('error');
-                    setMessage(error.message || 'Failed to join.');
+                    showNotification(error.message || 'Failed to join.', 'error');
                 }
             } else {
-                setStatus('success');
-                setMessage('Access Granted.');
+                showNotification('Access Granted. Welcome to the waitlist.', 'success');
                 setEmail(""); // clear input
             }
         } catch (err) {
-            setStatus('error');
-            setMessage('An error occurred.');
+            showNotification('An error occurred.', 'error');
         } finally {
             setLoading(false);
         }
@@ -56,25 +49,19 @@ export default function Footer() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            disabled={loading || status === 'success'}
+                            disabled={loading}
                             placeholder="Enter your email"
                             required
                             className="w-full bg-mist/10 border border-gray-800 rounded-[1rem] px-6 py-4 font-mono text-sm focus:outline-none focus:border-mist focus:bg-mist/20 transition-all placeholder:text-mist-600 text-white disabled:opacity-50"
                         />
                         <button
                             type="submit"
-                            disabled={loading || status === 'success'}
+                            disabled={loading}
                             className="shrink-0 w-full sm:w-auto px-8 py-4 bg-spark text-paper font-sans font-medium tracking-tight-custom uppercase rounded-[1rem] hover:bg-[#E64500] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {loading ? "Booting..." : (status === 'success' ? "Verified" : "Request Early Access")}
+                            {loading ? "Booting..." : "Request Early Access"}
                         </button>
                     </div>
-                    {/* Status Message */}
-                    {message && (
-                        <div className={`text-sm font-mono mt-2 sm:absolute sm:-bottom-8 sm:left-1/2 sm:-translate-x-1/2 w-full ${status === 'error' ? 'text-red-400' : 'text-green-400'}`}>
-                            {message}
-                        </div>
-                    )}
                 </form>
 
                 <div className="mt-12 flex flex-col items-center gap-6">

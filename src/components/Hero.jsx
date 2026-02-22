@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { supabase } from '../lib/supabase';
+import { useNotification } from '../lib/NotificationContext';
 
 export default function Hero() {
     const comp = useRef(null);
@@ -13,38 +14,30 @@ export default function Hero() {
     // Form State
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState("idle"); // idle, success, error
-    const [message, setMessage] = useState("");
+    const { showNotification } = useNotification();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!email) return;
 
         setLoading(true);
-        setStatus("idle");
-        setMessage("");
-
         try {
             const { error } = await supabase
                 .from('waitlist')
                 .insert([{ email }]);
 
             if (error) {
-                if (error.code === '23505') { // Postgres unique violation code
-                    setStatus('error');
-                    setMessage('You are already on the waitlist.');
+                if (error.code === '23505') {
+                    showNotification('You are already on the waitlist.', 'error');
                 } else {
-                    setStatus('error');
-                    setMessage(error.message || 'Failed to join. Please try again.');
+                    showNotification(error.message || 'Failed to join. Please try again.', 'error');
                 }
             } else {
-                setStatus('success');
-                setMessage('Access Granted. You are on the list.');
+                showNotification('Access Granted. You are on the list.', 'success');
                 setEmail(""); // clear input
             }
         } catch (err) {
-            setStatus('error');
-            setMessage('An unexpected error occurred.');
+            showNotification('An unexpected error occurred.', 'error');
         } finally {
             setLoading(false);
         }
@@ -142,7 +135,7 @@ export default function Hero() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            disabled={loading || status === 'success'}
+                            disabled={loading}
                             placeholder={placeholder}
                             required
                             className="w-full bg-white/50 backdrop-blur-md border border-mist-300 rounded-[1rem] px-6 py-4 font-mono text-sm focus:outline-none focus:border-void focus:bg-white transition-all placeholder:text-void/40 hover:bg-white/80 shadow-sm disabled:opacity-50"
@@ -150,20 +143,14 @@ export default function Hero() {
                         <button
                             ref={ctaBtnRef}
                             type="submit"
-                            disabled={loading || status === 'success'}
+                            disabled={loading}
                             className="shrink-0 w-full sm:w-auto px-8 py-4 bg-void text-paper font-sans font-medium tracking-tight-custom uppercase rounded-[1rem] hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {loading ? "Booting..." : (status === 'success' ? "Verified" : "Sign Me Up")}
+                            {loading ? "Booting..." : "Sign Me Up"}
                         </button>
                     </div>
-                    {/* Status Message */}
-                    {message && (
-                        <div className={`text-sm font-mono mt-2 ${status === 'error' ? 'text-red-500' : 'text-green-600'}`}>
-                            {message}
-                        </div>
-                    )}
                 </form>
             </div>
-        </section>
+        </section >
     );
 }
