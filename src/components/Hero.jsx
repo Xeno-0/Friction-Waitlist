@@ -103,6 +103,73 @@ export default function Hero() {
                 ></div>
             </div>
 
+            {/* Organic Forward-Traveling Waves */}
+            <div className="absolute inset-0 z-[5] overflow-hidden pointer-events-none">
+                <svg viewBox="0 0 1600 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+
+                    {/* Wave 1 — travels at 9s, highest opacity */}
+                    <g>
+                        <animateTransform attributeName="transform" type="translate" from="0 0" to="-800 0" dur="9s" repeatCount="indefinite" />
+                        <path fill="none" stroke="var(--color-void)" strokeWidth="2"
+                            vectorEffect="non-scaling-stroke" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
+                            <animate attributeName="d"
+                                dur="24s"
+                                repeatCount="indefinite"
+                                calcMode="spline"
+                                keyTimes="0; 0.4; 0.6; 1"
+                                keySplines="0.42 0 0.58 1; 0 0 1 1; 0.42 0 0.58 1"
+                                values="
+                                    M 0 200 C 200 50, 600 350, 800 200 C 1000 50, 1400 350, 1600 200 C 1800 50, 2200 350, 2400 200 C 2600 50, 3000 350, 3200 200;
+                                    M 0 200 C 200 198, 600 202, 800 200 C 1000 198, 1400 202, 1600 200 C 1800 198, 2200 202, 2400 200 C 2600 198, 3000 202, 3200 200;
+                                    M 0 200 C 200 198, 600 202, 800 200 C 1000 198, 1400 202, 1600 200 C 1800 198, 2200 202, 2400 200 C 2600 198, 3000 202, 3200 200;
+                                    M 0 200 C 200 50, 600 350, 800 200 C 1000 50, 1400 350, 1600 200 C 1800 50, 2200 350, 2400 200 C 2600 50, 3000 350, 3200 200
+                                " />
+                        </path>
+                    </g>
+
+                    {/* Wave 2 — travels at 13s, medium opacity */}
+                    <g>
+                        <animateTransform attributeName="transform" type="translate" from="0 0" to="-800 0" dur="13s" repeatCount="indefinite" />
+                        <path fill="none" stroke="var(--color-void)" strokeWidth="2"
+                            vectorEffect="non-scaling-stroke" strokeLinecap="round" strokeLinejoin="round" opacity="0.35">
+                            <animate attributeName="d"
+                                dur="24s"
+                                repeatCount="indefinite"
+                                calcMode="spline"
+                                keyTimes="0; 0.4; 0.6; 1"
+                                keySplines="0.42 0 0.58 1; 0 0 1 1; 0.42 0 0.58 1"
+                                values="
+                                    M 0 200 C 266 380, 533 20, 800 200 C 1066 380, 1333 20, 1600 200 C 1866 380, 2133 20, 2400 200 C 2666 380, 2933 20, 3200 200;
+                                    M 0 200 C 266 202, 533 198, 800 200 C 1066 202, 1333 198, 1600 200 C 1866 202, 2133 198, 2400 200 C 2666 202, 2933 198, 3200 200;
+                                    M 0 200 C 266 202, 533 198, 800 200 C 1066 202, 1333 198, 1600 200 C 1866 202, 2133 198, 2400 200 C 2666 202, 2933 198, 3200 200;
+                                    M 0 200 C 266 380, 533 20, 800 200 C 1066 380, 1333 20, 1600 200 C 1866 380, 2133 20, 2400 200 C 2666 380, 2933 20, 3200 200
+                                " />
+                        </path>
+                    </g>
+
+                    {/* Wave 3 — travels at 18s, lowest opacity */}
+                    <g>
+                        <animateTransform attributeName="transform" type="translate" from="0 0" to="-800 0" dur="18s" repeatCount="indefinite" />
+                        <path fill="none" stroke="var(--color-void)" strokeWidth="2"
+                            vectorEffect="non-scaling-stroke" strokeLinecap="round" strokeLinejoin="round" opacity="0.12">
+                            <animate attributeName="d"
+                                dur="24s"
+                                repeatCount="indefinite"
+                                calcMode="spline"
+                                keyTimes="0; 0.4; 0.6; 1"
+                                keySplines="0.42 0 0.58 1; 0 0 1 1; 0.42 0 0.58 1"
+                                values="
+                                    M 0 200 C 150 0, 650 400, 800 200 C 950 0, 1450 400, 1600 200 C 1750 0, 2250 400, 2400 200 C 2550 0, 3050 400, 3200 200;
+                                    M 0 200 C 150 196, 650 204, 800 200 C 950 196, 1450 204, 1600 200 C 1750 196, 2250 204, 2400 200 C 2550 196, 3050 204, 3200 200;
+                                    M 0 200 C 150 196, 650 204, 800 200 C 950 196, 1450 204, 1600 200 C 1750 196, 2250 204, 2400 200 C 2550 196, 3050 204, 3200 200;
+                                    M 0 200 C 150 0, 650 400, 800 200 C 950 0, 1450 400, 1600 200 C 1750 0, 2250 400, 2400 200 C 2550 0, 3050 400, 3200 200
+                                " />
+                        </path>
+                    </g>
+
+                </svg>
+            </div>
+
             {/* Overlay Texture */}
             <div
                 className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
