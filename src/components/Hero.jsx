@@ -92,10 +92,10 @@ export default function Hero() {
     return (
         <section ref={comp} className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-paper">
 
-            {/* Subtle, safe Animated Grid Background */}
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center">
+            {/* Animated Grid Background */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <div
-                    className="absolute inset-[-100%] bg-grid-pattern opacity-100"
+                    className="bg-grid-pattern opacity-100"
                     style={{
                         maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
                         WebkitMaskImage: "radial-gradient(ellipse at center, white 40%, transparent 80%)"
