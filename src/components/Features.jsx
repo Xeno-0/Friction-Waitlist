@@ -18,18 +18,6 @@ export default function Features() {
     const [typedText, setTypedText] = useState("");
     const typeCursorRef = useRef(null);
 
-    // Spotlight Hover Effect Logic
-    const handleMouseMove = (e) => {
-        const cards = e.currentTarget.querySelectorAll('.feature-card');
-        for (const card of cards) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        }
-    };
-
     useEffect(() => {
         let ctx = gsap.context(() => {
 
@@ -101,15 +89,13 @@ export default function Features() {
                     </p>
                 </div>
 
-                {/* Feature Grid - Added onMouseMove listener */}
-                <div
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
-                    onMouseMove={handleMouseMove}
-                >
+                {/* Feature Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                     {/* Card 1: Breathing Flow */}
-                    <div id="card-1" className="feature-card group relative flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
-                        <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
+                    {/* CHANGED: Replaced spotlight classes with scale and box-shadow transitions */}
+                    <div id="card-1" className="feature-card flex flex-col border border-mist hover:border-spark/50 rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(240,86,40,0.15)] cursor-default">
+                        <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative pointer-events-none">
                             <div className="relative z-10 w-full max-w-[220px] aspect-square bg-[#1A1A1A] rounded-[1rem] shadow-2xl border border-gray-800 flex items-center justify-center overflow-hidden">
                                 <img
                                     src={breathingFlowSvg}
@@ -125,25 +111,13 @@ export default function Features() {
                                 Other Apps make you stare at a moving bubble. We make you actually keep the phone down
                             </p>
                         </div>
-
-                        {/* Spotlight Border Glow */}
-                        <div
-                            className="pointer-events-none absolute inset-0 z-50 rounded-[1.5rem] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                            style={{
-                                background: 'radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(240, 86, 40, 0.8), transparent 40%)',
-                                WebkitMaskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                                WebkitMaskComposite: 'xor',
-                                maskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                                maskComposite: 'exclude',
-                                padding: '2px', // Width of the border glow
-                            }}
-                        />
                     </div>
 
                     {/* Card 2: Scan to Scroll */}
-                    <div id="card-2" className="feature-card group relative flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
-                        <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
-                            <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-30 blur-sm pointer-events-none">
+                    {/* CHANGED: Replaced spotlight classes with scale and box-shadow transitions */}
+                    <div id="card-2" className="feature-card flex flex-col border border-mist hover:border-spark/50 rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(240,86,40,0.15)] cursor-default">
+                        <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative pointer-events-none">
+                            <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-30 blur-sm">
                                 <div className="w-full h-8 bg-gray-300 rounded"></div>
                                 <div className="w-full h-32 bg-gray-300 rounded-xl"></div>
                                 <div className="w-2/3 h-4 bg-gray-300 rounded"></div>
@@ -175,25 +149,13 @@ export default function Features() {
                                 Want to use social media? Scan the QR code of an object lying in the other room first.
                             </p>
                         </div>
-
-                        {/* Spotlight Border Glow */}
-                        <div
-                            className="pointer-events-none absolute inset-0 z-50 rounded-[1.5rem] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                            style={{
-                                background: 'radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(240, 86, 40, 0.8), transparent 40%)',
-                                WebkitMaskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                                WebkitMaskComposite: 'xor',
-                                maskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                                maskComposite: 'exclude',
-                                padding: '2px', // Width of the border glow
-                            }}
-                        />
                     </div>
 
                     {/* Card 3: Positive Reinforcement */}
-                    <div id="card-3" className="feature-card group relative flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
-                        <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
-                            <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-30 blur-sm pointer-events-none">
+                    {/* CHANGED: Replaced spotlight classes with scale and box-shadow transitions */}
+                    <div id="card-3" className="feature-card flex flex-col border border-mist hover:border-spark/50 rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(240,86,40,0.15)] cursor-default">
+                        <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative pointer-events-none">
+                            <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-30 blur-sm">
                                 <div className="w-full h-32 bg-gray-300 rounded-xl"></div>
                                 <div className="w-2/3 h-4 bg-gray-300 rounded"></div>
                                 <div className="w-1/2 h-4 bg-gray-300 rounded"></div>
@@ -214,19 +176,6 @@ export default function Features() {
                                 Manifest your success to life. Supports Custom phrases as well
                             </p>
                         </div>
-
-                        {/* Spotlight Border Glow */}
-                        <div
-                            className="pointer-events-none absolute inset-0 z-50 rounded-[1.5rem] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                            style={{
-                                background: 'radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(240, 86, 40, 0.8), transparent 40%)',
-                                WebkitMaskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                                WebkitMaskComposite: 'xor',
-                                maskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                                maskComposite: 'exclude',
-                                padding: '2px', // Width of the border glow
-                            }}
-                        />
                     </div>
 
                 </div>
