@@ -93,7 +93,8 @@ export default function Features() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                     {/* Card 1: Breathing Flow (animated SVG) */}
-                    <div id="card-1" className="flex flex-col border border-mist rounded-[1.5rem] bg-white overflow-hidden shadow-sm">
+                    {/* CHANGED: bg-white to bg-[#1A1A1A] */}
+                    <div id="card-1" className="flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
                         <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
                             {/* Dark Inner Box */}
                             <div className="relative z-10 w-full max-w-[220px] aspect-square bg-[#1A1A1A] rounded-[1rem] shadow-2xl border border-gray-800 flex items-center justify-center overflow-hidden">
@@ -105,7 +106,8 @@ export default function Features() {
                                 />
                             </div>
                         </div>
-                        <div className="p-6 border-t border-gray-800 bg-[#1A1A1A] mt-auto">
+                        {/* CHANGED: Added flex-1, removed mt-auto */}
+                        <div className="flex-1 p-6 border-t border-gray-800 bg-[#1A1A1A]">
                             <h3 className="font-sans font-bold text-lg text-white">Stop. Breathe. Choose.</h3>
                             <p className="mt-2 text-sm font-sans text-gray-400">
                                 Other Apps make you stare at a moving bubble. We make you actually keep the phone down
@@ -114,7 +116,8 @@ export default function Features() {
                     </div>
 
                     {/* Card 2: Scan to Scroll */}
-                    <div id="card-2" className="flex flex-col border border-mist rounded-[1.5rem] bg-white overflow-hidden shadow-sm">
+                    {/* CHANGED: bg-white to bg-[#1A1A1A] */}
+                    <div id="card-2" className="flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
                         <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
                             {/* Background representation of feed */}
                             <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-30 blur-sm pointer-events-none">
@@ -149,7 +152,8 @@ export default function Features() {
                                 <div className="text-[10px] font-mono text-mist/60">WAITING FOR SCAN...</div>
                             </div>
                         </div>
-                        <div className="p-6 border-t border-gray-800 bg-[#1A1A1A] mt-auto">
+                        {/* CHANGED: Added flex-1, removed mt-auto */}
+                        <div className="flex-1 p-6 border-t border-gray-800 bg-[#1A1A1A]">
                             <h3 className="font-sans font-bold text-lg text-white">Scan to Scroll</h3>
                             <p className="mt-2 text-sm font-sans text-gray-400">
                                 Want to use social media? Scan the QR code of an object lying in the other room first.
@@ -158,7 +162,8 @@ export default function Features() {
                     </div>
 
                     {/* Card 3: Positive Reinforcement */}
-                    <div id="card-3" className="flex flex-col border border-mist rounded-[1.5rem] bg-white overflow-hidden shadow-sm">
+                    {/* CHANGED: bg-white to bg-[#1A1A1A] */}
+                    <div id="card-3" className="flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
                         <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
                             {/* Background representation of feed */}
                             <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-30 blur-sm pointer-events-none">
@@ -179,7 +184,8 @@ export default function Features() {
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-gray-800 bg-[#1A1A1A] mt-auto">
+                        {/* CHANGED: Added flex-1, removed mt-auto */}
+                        <div className="flex-1 p-6 border-t border-gray-800 bg-[#1A1A1A]">
                             <h3 className="font-sans font-bold text-lg text-white">Positive Reinforcement</h3>
                             <p className="mt-2 text-sm font-sans text-gray-400">
                                 Rewire your brain completely. One affirmation at a time.
