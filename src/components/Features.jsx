@@ -79,21 +79,25 @@ export default function Features() {
                 </div>
 
                 {/* Feature Grid */}
+                {/* Feature Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                     {/* Card 1: Breathing Flow (animated SVG) */}
-                    <div id="card-1" className="flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
-                        <div className="h-64 flex items-center justify-center overflow-hidden relative">
-                            <img
-                                src={breathingFlowSvg}
-                                alt="Friction 3-state breathing flow animation"
-                                className="w-full h-full object-cover"
-                                style={{ objectPosition: '50% 42%' }}
-                            />
+                    <div id="card-1" className="flex flex-col border border-mist rounded-[1.5rem] bg-white overflow-hidden shadow-sm">
+                        <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
+                            {/* Dark Inner Box */}
+                            <div className="relative z-10 w-full max-w-[220px] aspect-square bg-[#1A1A1A] rounded-[1rem] shadow-2xl border border-gray-800 flex items-center justify-center overflow-hidden">
+                                <img
+                                    src={breathingFlowSvg}
+                                    alt="Friction 3-state breathing flow animation"
+                                    className="w-[120%] h-[120%] object-cover max-w-none"
+                                    style={{ objectPosition: 'center' }}
+                                />
+                            </div>
                         </div>
-                        <div className="p-6 border-t border-gray-800">
-                            <h3 className="font-sans font-bold text-lg text-white">Breathe Before You Scroll</h3>
-                            <p className="mt-2 text-sm font-sans text-gray-400">
+                        <div className="p-6 border-t border-mist bg-white mt-auto">
+                            <h3 className="font-sans font-bold text-lg text-void">Breathe Before You Scroll</h3>
+                            <p className="mt-2 text-sm font-sans text-gray-500">
                                 A short breathing exercise interrupts the reflex — giving your brain a chance to choose.
                             </p>
                         </div>
@@ -109,21 +113,19 @@ export default function Features() {
                                 <div className="w-2/3 h-4 bg-gray-300 rounded"></div>
                             </div>
 
-                            {/* QR Scan Overlay */}
-                            <div className="relative z-10 w-full max-w-[200px] bg-void text-paper rounded-[1rem] p-5 shadow-2xl border border-gray-800 flex flex-col items-center">
-                                <div className="flex items-center gap-2 mb-4 w-full justify-start">
+                            {/* Dark Inner Box (QR Scan Overlay) */}
+                            <div className="relative z-10 w-full max-w-[220px] aspect-square bg-void text-paper rounded-[1rem] p-5 shadow-2xl border border-gray-800 flex flex-col items-center justify-center">
+                                <div className="flex items-center gap-2 mb-3 w-full justify-start">
                                     <Zap className="w-4 h-4 text-spark" />
                                     <span className="text-xs font-sans tracking-tight-custom uppercase text-mist">Scan to Proceed</span>
                                 </div>
 
-                                <div className="relative w-24 h-24 bg-white p-1 rounded-lg mb-2 overflow-hidden shadow-inner flex items-center justify-center">
-                                    {/* User-provided QR Code Image */}
+                                <div className="relative w-24 h-24 bg-white p-1 rounded-lg mb-3 overflow-hidden shadow-inner flex items-center justify-center">
                                     <img
                                         src={qrCodeImg}
                                         alt="Verification QR Code"
                                         className="w-full h-full object-contain"
                                     />
-
                                     {/* Animated Scan Line */}
                                     <div
                                         ref={scanLineRef}
@@ -134,10 +136,10 @@ export default function Features() {
                                     <div className="absolute inset-0 bg-spark/5 pointer-events-none"></div>
                                 </div>
 
-                                <div className="text-[10px] font-mono text-mist/60 mt-1">WAITING FOR SCAN...</div>
+                                <div className="text-[10px] font-mono text-mist/60">WAITING FOR SCAN...</div>
                             </div>
                         </div>
-                        <div className="p-6 border-t border-mist">
+                        <div className="p-6 border-t border-mist bg-white mt-auto">
                             <h3 className="font-sans font-bold text-lg text-void">Scan to Scroll</h3>
                             <p className="mt-2 text-sm font-sans text-gray-500">
                                 Want to use social media? Scan the QR code of an object lying in the other room first.
@@ -146,24 +148,26 @@ export default function Features() {
                     </div>
 
                     {/* Card 3: The Time Vault */}
-                    <div id="card-3" className="flex flex-col border border-mist rounded-[1.5rem] bg-void text-paper overflow-hidden shadow-sm relative">
-                        <div className="h-64 flex flex-col items-center justify-center p-6 relative z-10">
-                            <Zap className="w-8 h-8 text-spark mb-6 opacity-80" />
-                            <div className="text-sm font-mono text-mist uppercase tracking-widest mb-2 opacity-60">
-                                Distractions Avoided
-                            </div>
-                            <div className="text-5xl lg:text-6xl font-sans font-bold tracking-tight-custom text-white tabular-nums">
-                                <span ref={counterRef}>0</span>
+                    <div id="card-3" className="flex flex-col border border-mist rounded-[1.5rem] bg-white overflow-hidden shadow-sm">
+                        <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
+                            {/* Dark Inner Box */}
+                            <div className="relative z-10 w-full max-w-[220px] aspect-square bg-void text-paper rounded-[1rem] p-5 shadow-2xl border border-gray-800 flex flex-col items-center justify-center overflow-hidden">
+                                <Zap className="w-6 h-6 text-spark mb-3 opacity-80" />
+                                <div className="text-[10px] font-mono text-mist uppercase tracking-widest mb-1 opacity-60 text-center">
+                                    Distractions Avoided
+                                </div>
+                                <div className="text-5xl font-sans font-bold tracking-tight-custom text-white tabular-nums relative z-10">
+                                    <span ref={counterRef}>0</span>
+                                </div>
+                                {/* Subtle glow behind counter */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-spark/20 blur-[40px] rounded-full pointer-events-none z-0"></div>
                             </div>
                         </div>
 
-                        {/* Subtle glow behind counter */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-spark/20 blur-[60px] rounded-full pointer-events-none z-0"></div>
-
-                        <div className="p-6 border-t border-gray-800 relative z-10 mt-auto bg-void">
-                            <h3 className="font-sans font-bold text-lg text-white">Built to be Annoying, Intentionally</h3>
-                            <p className="mt-2 text-sm font-sans text-gray-400">
-                                Instead of scrolling, use the time to become a better version of yourself
+                        <div className="p-6 border-t border-mist bg-white mt-auto">
+                            <h3 className="font-sans font-bold text-lg text-void">Built to be Annoying, Intentionally</h3>
+                            <p className="mt-2 text-sm font-sans text-gray-500">
+                                Instead of scrolling, use the time to become a better version of yourself.
                             </p>
                         </div>
                     </div>

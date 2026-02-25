@@ -90,7 +90,6 @@
     #label-exhale { animation: labelExhale 20s linear infinite; }
   </style>
 
-  <rect width="400" height="320" fill="#1A1A1A"/>
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.06"/>
