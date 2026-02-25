@@ -123,7 +123,7 @@ export default function HowItWorks() {
 
                 <div className="text-center mb-24 sticky top-12 z-10 w-full backdrop-blur-sm bg-void/80 py-4 border-b border-gray-800">
                     <h2 className="text-3xl md:text-5xl font-sans font-bold tracking-tight-custom text-white mb-2">
-                        DEFEAT THE BRAINROT
+                        Reclaim Your Attention
                     </h2>
                     <p className="text-mist-200 font-serif italic text-lg">Here is how friction helps :-</p>
                 </div>
