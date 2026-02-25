@@ -20,7 +20,7 @@ export default function HowItWorks() {
         {
             id: "step-1",
             title: "Interruption",
-            description: "When you attempt to open a distracting app, Friction instantly intercepts the action, giving you time to rethink.",
+            description: "When you attempt to open a distracting app, Friction instantly stops and gives you time to rethink.",
             visual: (
                 <div className="w-full h-full bg-void flex items-center justify-center relative overflow-hidden rounded-xl border border-void shadow-inner">
                     {/* User Provided Video */}
@@ -39,11 +39,11 @@ export default function HowItWorks() {
         {
             id: "step-2",
             title: "Challenge",
-            description: "You must complete a task: Writing a positive phrase, Scanning a QR code, Sliding a really slow slider, etc. Your brain moves from autopilot to manual control.",
+            description: "You must complete a task: Scanning a QR code, Writing a positive phrase, Sliding a really slow slider, etc. Your brain moves from autopilot to manual control.",
             visual: (
                 <div className="w-full h-full bg-void flex flex-col items-center justify-center relative overflow-hidden rounded-xl border border-void">
                     <div className="text-xs font-mono text-mist-200 mb-4 uppercase tracking-widest flex items-center gap-2">
-                        <Fingerprint size={14} className="text-spark" /> Take a breather
+                        <Fingerprint size={18} className="text-spark" /> Take a breather
                     </div>
                     {/* Slider Puzzle Track */}
                     <div className="w-4/5 h-12 bg-gray-800 rounded-full relative border border-gray-700 overflow-hidden shadow-inner flex items-center">
@@ -69,7 +69,7 @@ export default function HowItWorks() {
                         <RefreshCcw size={28} className="text-white" />
                     </div>
                     <div ref={dopamineTextRef} className="font-sans font-bold text-xl text-green-400 tracking-tight-custom text-center px-4">
-                        +1 Dopamine Cycle Restored.
+                        +1 Step Closer to Success
                     </div>
                 </div>
             )
@@ -123,7 +123,7 @@ export default function HowItWorks() {
 
                 <div className="text-center mb-24 sticky top-12 z-10 w-full backdrop-blur-sm bg-void/80 py-4 border-b border-gray-800">
                     <h2 className="text-3xl md:text-5xl font-sans font-bold tracking-tight-custom text-white mb-2">
-                        Reclaim Your Attention
+                        Reclaim Your Focus
                     </h2>
                     <p className="text-mist-200 font-serif italic text-lg">Here is how friction helps :-</p>
                 </div>
