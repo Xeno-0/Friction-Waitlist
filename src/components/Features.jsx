@@ -18,6 +18,18 @@ export default function Features() {
     const [typedText, setTypedText] = useState("");
     const typeCursorRef = useRef(null);
 
+    // Spotlight Hover Effect Logic
+    const handleMouseMove = (e) => {
+        const cards = e.currentTarget.querySelectorAll('.feature-card');
+        for (const card of cards) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        }
+    };
+
     useEffect(() => {
         let ctx = gsap.context(() => {
 
@@ -89,14 +101,15 @@ export default function Features() {
                     </p>
                 </div>
 
-                {/* Feature Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Feature Grid - Added onMouseMove listener */}
+                <div
+                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                    onMouseMove={handleMouseMove}
+                >
 
-                    {/* Card 1: Breathing Flow (animated SVG) */}
-                    {/* CHANGED: bg-white to bg-[#1A1A1A] */}
-                    <div id="card-1" className="flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
+                    {/* Card 1: Breathing Flow */}
+                    <div id="card-1" className="feature-card group relative flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
                         <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
-                            {/* Dark Inner Box */}
                             <div className="relative z-10 w-full max-w-[220px] aspect-square bg-[#1A1A1A] rounded-[1rem] shadow-2xl border border-gray-800 flex items-center justify-center overflow-hidden">
                                 <img
                                     src={breathingFlowSvg}
@@ -106,73 +119,85 @@ export default function Features() {
                                 />
                             </div>
                         </div>
-                        {/* CHANGED: Added flex-1, removed mt-auto */}
                         <div className="flex-1 p-6 border-t border-gray-800 bg-[#1A1A1A]">
                             <h3 className="font-sans font-bold text-lg text-white">Stop. Breathe. Choose.</h3>
                             <p className="mt-2 text-sm font-sans text-gray-400">
                                 Other Apps make you stare at a moving bubble. We make you actually keep the phone down
                             </p>
                         </div>
+
+                        {/* Spotlight Border Glow */}
+                        <div
+                            className="pointer-events-none absolute inset-0 z-50 rounded-[1.5rem] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                            style={{
+                                background: 'radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(240, 86, 40, 0.8), transparent 40%)',
+                                WebkitMaskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                                WebkitMaskComposite: 'xor',
+                                maskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                                maskComposite: 'exclude',
+                                padding: '2px', // Width of the border glow
+                            }}
+                        />
                     </div>
 
                     {/* Card 2: Scan to Scroll */}
-                    {/* CHANGED: bg-white to bg-[#1A1A1A] */}
-                    <div id="card-2" className="flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
+                    <div id="card-2" className="feature-card group relative flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
                         <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
-                            {/* Background representation of feed */}
                             <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-30 blur-sm pointer-events-none">
                                 <div className="w-full h-8 bg-gray-300 rounded"></div>
                                 <div className="w-full h-32 bg-gray-300 rounded-xl"></div>
                                 <div className="w-2/3 h-4 bg-gray-300 rounded"></div>
                             </div>
-
-                            {/* Dark Inner Box (QR Scan Overlay) */}
                             <div className="relative z-10 w-full max-w-[220px] aspect-square bg-void text-paper rounded-[1rem] p-5 shadow-2xl border border-gray-800 flex flex-col items-center justify-center">
                                 <div className="flex items-center gap-2 mb-3 w-full justify-start">
                                     <Zap className="w-4 h-4 text-spark" />
                                     <span className="text-xs font-sans tracking-tight-custom uppercase text-mist">Scan to Proceed</span>
                                 </div>
-
                                 <div className="relative w-24 h-24 bg-white p-1 rounded-lg mb-3 overflow-hidden shadow-inner flex items-center justify-center">
                                     <img
                                         src={qrCodeImg}
                                         alt="Verification QR Code"
                                         className="w-full h-full object-contain"
                                     />
-                                    {/* Animated Scan Line */}
                                     <div
                                         ref={scanLineRef}
                                         className="absolute left-0 right-0 h-0.5 bg-spark shadow-[0_0_8px_rgba(255,77,0,0.8)] z-20"
                                         style={{ top: 0 }}
                                     />
-                                    {/* Scanning Glow Effect */}
                                     <div className="absolute inset-0 bg-spark/5 pointer-events-none"></div>
                                 </div>
-
                                 <div className="text-[10px] font-mono text-mist/60">WAITING FOR SCAN...</div>
                             </div>
                         </div>
-                        {/* CHANGED: Added flex-1, removed mt-auto */}
                         <div className="flex-1 p-6 border-t border-gray-800 bg-[#1A1A1A]">
                             <h3 className="font-sans font-bold text-lg text-white">Scan to Scroll</h3>
                             <p className="mt-2 text-sm font-sans text-gray-400">
                                 Want to use social media? Scan the QR code of an object lying in the other room first.
                             </p>
                         </div>
+
+                        {/* Spotlight Border Glow */}
+                        <div
+                            className="pointer-events-none absolute inset-0 z-50 rounded-[1.5rem] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                            style={{
+                                background: 'radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(240, 86, 40, 0.8), transparent 40%)',
+                                WebkitMaskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                                WebkitMaskComposite: 'xor',
+                                maskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                                maskComposite: 'exclude',
+                                padding: '2px', // Width of the border glow
+                            }}
+                        />
                     </div>
 
                     {/* Card 3: Positive Reinforcement */}
-                    {/* CHANGED: bg-white to bg-[#1A1A1A] */}
-                    <div id="card-3" className="flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
+                    <div id="card-3" className="feature-card group relative flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
                         <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
-                            {/* Background representation of feed */}
                             <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-30 blur-sm pointer-events-none">
                                 <div className="w-full h-32 bg-gray-300 rounded-xl"></div>
                                 <div className="w-2/3 h-4 bg-gray-300 rounded"></div>
                                 <div className="w-1/2 h-4 bg-gray-300 rounded"></div>
                             </div>
-
-                            {/* Modal Overlay */}
                             <div className="relative z-10 w-full max-w-[220px] aspect-square bg-void text-paper rounded-[1rem] p-5 shadow-2xl border border-gray-800 flex flex-col justify-center">
                                 <div className="flex items-center gap-2 mb-4">
                                     <Smartphone className="w-4 h-4 text-spark" />
@@ -183,14 +208,25 @@ export default function Features() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* CHANGED: Added flex-1, removed mt-auto */}
                         <div className="flex-1 p-6 border-t border-gray-800 bg-[#1A1A1A]">
                             <h3 className="font-sans font-bold text-lg text-white">Positive Reinforcement</h3>
                             <p className="mt-2 text-sm font-sans text-gray-400">
                                 Manifest your success to life. Supports Custom phrases as well
                             </p>
                         </div>
+
+                        {/* Spotlight Border Glow */}
+                        <div
+                            className="pointer-events-none absolute inset-0 z-50 rounded-[1.5rem] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                            style={{
+                                background: 'radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(240, 86, 40, 0.8), transparent 40%)',
+                                WebkitMaskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                                WebkitMaskComposite: 'xor',
+                                maskImage: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                                maskComposite: 'exclude',
+                                padding: '2px', // Width of the border glow
+                            }}
+                        />
                     </div>
 
                 </div>
