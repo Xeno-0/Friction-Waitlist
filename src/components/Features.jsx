@@ -188,7 +188,7 @@ export default function Features() {
                         <div className="flex-1 p-6 border-t border-gray-800 bg-[#1A1A1A]">
                             <h3 className="font-sans font-bold text-lg text-white">Positive Reinforcement</h3>
                             <p className="mt-2 text-sm font-sans text-gray-400">
-                                Rewire your brain completely. One affirmation at a time.
+                                Manifest your success to life. Supports Custom phrases as well
                             </p>
                         </div>
                     </div>
