@@ -1,0 +1,158 @@
+<svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <style>
+    :root {
+      --bg: #1A1A1A;
+      --accent: #F05628;
+      --text-primary: #FFFFFF;
+      --text-secondary: #888888;
+      --btn-alt: #333333;
+    }
+
+    /* ── Master 20s Timeline Synchronization ── */
+    @keyframes state1 {
+      0%, 15% { opacity: 1; visibility: visible; }
+      20%, 100% { opacity: 0; visibility: hidden; }
+    }
+    
+    @keyframes state2 {
+      0%, 19% { opacity: 0; visibility: hidden; }
+      20%, 78% { opacity: 1; visibility: visible; }
+      80%, 100% { opacity: 0; visibility: hidden; }
+    }
+    
+    @keyframes state3 {
+      0%, 79% { opacity: 0; visibility: hidden; }
+      80%, 95% { opacity: 1; visibility: visible; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    #state-1 { animation: state1 20s linear infinite; }
+    #state-2 { animation: state2 20s linear infinite; }
+    #state-3 { animation: state3 20s linear infinite; }
+
+    /* ── Continuous Effects ── */
+    @keyframes phonePulse {
+      0%, 100% { filter: drop-shadow(0 0 4px var(--accent)); opacity: 0.6; }
+      50% { filter: drop-shadow(0 0 16px var(--accent)); opacity: 1; }
+    }
+    #phone-group { animation: phonePulse 2s ease-in-out infinite; }
+
+    @keyframes floatBtn {
+      0%, 100% { transform: translateY(0); filter: drop-shadow(0 4px 12px rgba(240,86,40,0.4)); }
+      50% { transform: translateY(-6px); filter: drop-shadow(0 10px 20px rgba(240,86,40,0.7)); }
+    }
+    #btn-exit { animation: floatBtn 3s ease-in-out infinite; }
+
+    /* ── Breathing Bubble ── */
+    /* Transform origin updated for new cropped height */
+    @keyframes breathe {
+      0%, 20%  { transform: scale(1); opacity: 0.15; }
+      40%      { transform: scale(1.5); opacity: 0.8; }
+      50%      { transform: scale(1.5); opacity: 0.8; }
+      80%, 100%{ transform: scale(1); opacity: 0.15; }
+    }
+    #bubble {
+      transform-origin: 200px 160px;
+      animation: breathe 20s ease-in-out infinite;
+    }
+
+    /* ── Progress Ring ── */
+    /* Transform origin updated for new cropped height */
+    @keyframes ringCountdown {
+      0%, 20%   { stroke-dashoffset: 0; }
+      80%, 100% { stroke-dashoffset: 785.4; }
+    }
+    #progress-ring {
+      transform-origin: 200px 160px;
+      transform: rotate(-90deg);
+      stroke-dasharray: 785.4;
+      animation: ringCountdown 20s linear infinite;
+    }
+
+    /* ── Dynamic Text Cycling ── */
+    @keyframes labelInhale {
+      0%, 19%   { opacity: 0; }
+      20%, 39%  { opacity: 1; }
+      40%, 100% { opacity: 0; }
+    }
+    @keyframes labelHold {
+      0%, 39%   { opacity: 0; }
+      40%, 49%  { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes labelExhale {
+      0%, 49%   { opacity: 0; }
+      50%, 79%  { opacity: 1; }
+      80%, 100% { opacity: 0; }
+    }
+    #label-inhale { animation: labelInhale 20s linear infinite; }
+    #label-hold   { animation: labelHold 20s linear infinite; }
+    #label-exhale { animation: labelExhale 20s linear infinite; }
+  </style>
+
+  <rect width="400" height="320" fill="#1A1A1A"/>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="320" fill="url(#grid)"/>
+
+  <g id="state-1">
+    <g id="phone-group">
+      <rect x="165" y="80" width="70" height="120" rx="10" ry="10" fill="none" stroke="#F05628" stroke-width="2.5"/>
+      <rect x="185" y="185" width="30" height="4" rx="2" fill="#F05628" opacity="0.7"/>
+      <rect x="190" y="86" width="20" height="4" rx="2" fill="none" stroke="#F05628" stroke-width="1.5"/>
+    </g>
+
+    <text x="200" y="240" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="2" fill="#FFFFFF" text-transform="uppercase">
+      PLACE PHONE FLAT
+    </text>
+    <text x="200" y="265" text-anchor="middle" font-size="12" fill="#888888">
+      Take a moment to disconnect.
+    </text>
+  </g>
+
+  <g id="state-2" opacity="0" visibility="hidden">
+    <circle id="bubble" cx="200" cy="160" r="75" fill="#F05628" opacity="0.15"/>
+
+    <circle cx="200" cy="160" r="125" fill="none" stroke="#F05628" stroke-width="1.5" opacity="0.15"/>
+
+    <circle id="progress-ring" cx="200" cy="160" r="125" fill="none" stroke="#F05628" stroke-width="3.5" stroke-linecap="round"/>
+
+    <text id="label-inhale" x="200" y="168" text-anchor="middle" font-size="22" font-weight="700" letter-spacing="3" fill="#FFFFFF">
+      INHALE...
+    </text>
+    <text id="label-hold" x="200" y="168" text-anchor="middle" font-size="22" font-weight="700" letter-spacing="3" fill="#FFFFFF" opacity="0">
+      HOLD...
+    </text>
+    <text id="label-exhale" x="200" y="168" text-anchor="middle" font-size="22" font-weight="700" letter-spacing="3" fill="#FFFFFF" opacity="0">
+      EXHALE...
+    </text>
+
+    <text x="200" y="305" text-anchor="middle" font-size="12" fill="#888888">
+      Breathe with Friction
+    </text>
+  </g>
+
+  <g id="state-3" opacity="0" visibility="hidden">
+    <text x="200" y="70" text-anchor="middle" font-size="22" font-weight="800" letter-spacing="1" fill="#FFFFFF">
+      TAKE A BREATH.
+    </text>
+    <text x="200" y="100" text-anchor="middle" font-size="13" fill="#888888">
+      Do you still want to open the app?
+    </text>
+
+    <g id="btn-exit">
+      <rect x="90" y="130" width="220" height="50" rx="12" fill="#F05628"/>
+      <text x="200" y="160" text-anchor="middle" font-size="14" font-weight="700" letter-spacing="1.5" fill="#FFFFFF">
+        EXIT APP
+      </text>
+    </g>
+
+    <rect x="90" y="200" width="220" height="50" rx="12" fill="#333333"/>
+    <text x="200" y="230" text-anchor="middle" font-size="13" font-weight="500" letter-spacing="1" fill="#888888">
+      CONTINUE
+    </text>
+  </g>
+</svg>
