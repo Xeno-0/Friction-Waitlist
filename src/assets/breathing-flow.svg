@@ -44,7 +44,7 @@
     #btn-exit { animation: floatBtn 3s ease-in-out infinite; }
 
     /* ── Breathing Bubble ── */
-    /* Transform origin updated for new cropped height */
+    /* Radius reduced to 50. Scale 1.5 maxes at 75, fitting inside the new ring. */
     @keyframes breathe {
       0%, 20%  { transform: scale(1); opacity: 0.15; }
       40%      { transform: scale(1.5); opacity: 0.8; }
@@ -57,15 +57,15 @@
     }
 
     /* ── Progress Ring ── */
-    /* Transform origin updated for new cropped height */
+    /* Radius reduced to 75. New circumference approx 471.2 */
     @keyframes ringCountdown {
       0%, 20%   { stroke-dashoffset: 0; }
-      80%, 100% { stroke-dashoffset: 785.4; }
+      80%, 100% { stroke-dashoffset: 471.2; } /* Updated for new radius */
     }
     #progress-ring {
       transform-origin: 200px 160px;
       transform: rotate(-90deg);
-      stroke-dasharray: 785.4;
+      stroke-dasharray: 471.2; /* Updated for new radius */
       animation: ringCountdown 20s linear infinite;
     }
 
@@ -113,11 +113,11 @@
   </g>
 
   <g id="state-2" opacity="0" visibility="hidden">
-    <circle id="bubble" cx="200" cy="160" r="75" fill="#F05628" opacity="0.15"/>
+    <circle id="bubble" cx="200" cy="160" r="50" fill="#F05628" opacity="0.15"/>
 
-    <circle cx="200" cy="160" r="125" fill="none" stroke="#F05628" stroke-width="1.5" opacity="0.15"/>
+    <circle cx="200" cy="160" r="75" fill="none" stroke="#F05628" stroke-width="1.5" opacity="0.15"/>
 
-    <circle id="progress-ring" cx="200" cy="160" r="125" fill="none" stroke="#F05628" stroke-width="3.5" stroke-linecap="round"/>
+    <circle id="progress-ring" cx="200" cy="160" r="75" fill="none" stroke="#F05628" stroke-width="3.5" stroke-linecap="round"/>
 
     <text id="label-inhale" x="200" y="168" text-anchor="middle" font-size="22" font-weight="700" letter-spacing="3" fill="#FFFFFF">
       INHALE...
