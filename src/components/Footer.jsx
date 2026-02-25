@@ -40,7 +40,7 @@ export default function Footer() {
             {/* CTA Block */}
             <div className="flex flex-col items-center justify-center flex-1 max-w-2xl mx-auto w-full mb-32 text-center">
                 <h2 className="text-3xl md:text-5xl font-sans font-bold tracking-tight-custom mb-10">
-                    To win the lottery, you must buy a ticket
+                    To win the lottery, You must buy a Ticket
                 </h2>
 
                 <form onSubmit={handleSubmit} className="w-full flex flex-col sm:flex-row items-center gap-3">
