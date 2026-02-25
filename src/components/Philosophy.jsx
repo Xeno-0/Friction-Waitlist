@@ -50,7 +50,7 @@ export default function Philosophy() {
                         className="text-3xl md:text-5xl lg:text-6xl font-serif italic text-paper leading-tight"
                         style={{ opacity: 0 }} // Hard-hide immediately before React mounts GSAP
                     >
-                        "The Algorithm is designed to harvest your time."
+                        "The Algorithm is designed to earn from your time"
                     </p>
                 </div>
 
@@ -61,7 +61,7 @@ export default function Philosophy() {
                         className="text-3xl md:text-5xl lg:text-6xl font-serif italic text-paper leading-tight"
                         style={{ opacity: 0 }} // Hard-hide immediately before React mounts GSAP
                     >
-                        "Friction is designed to defend your mind."
+                        "Friction is designed to defend your mind"
                     </p>
                 </div>
 

@@ -53,14 +53,14 @@ export default function ColdTurkey() {
                     ref={textRef1}
                     className="text-[clamp(2.5rem,5vw,5rem)] font-sans font-bold tracking-tight-custom leading-[1.1] text-void"
                 >
-                    You don't quit a habit<br /> cold turkey, and we understand that.
+                    You don't quit a habit<br /> cold turkey, and we understand that
                 </h2>
 
                 <p
                     ref={textRef2}
                     className="text-[clamp(1.5rem,3vw,2.5rem)] font-serif italic text-mist-600 mt-4"
                 >
-                    Start with <span ref={frictionRef} className="font-sans font-bold not-italic inline-block drop-shadow-md">intentional friction.</span>
+                    Start with <span ref={frictionRef} className="font-sans font-bold not-italic inline-block drop-shadow-md">intentional friction</span>
                 </p>
 
             </div>

@@ -20,7 +20,7 @@ export default function HowItWorks() {
         {
             id: "step-1",
             title: "Interruption",
-            description: "When you attempt to open a distracting app, Friction instantly stops and gives you time to rethink.",
+            description: "When you attempt to open a distracting app, Friction instantly stops and gives you time to rethink",
             visual: (
                 <div className="w-full h-full bg-void flex items-center justify-center relative overflow-hidden rounded-xl border border-void shadow-inner">
                     {/* User Provided Video */}
@@ -39,7 +39,7 @@ export default function HowItWorks() {
         {
             id: "step-2",
             title: "Challenge",
-            description: "You must complete a task: Scanning a QR code, Writing a positive phrase, Sliding a really slow slider, etc. Your brain moves from autopilot to manual control.",
+            description: "You must complete a task: Scanning a QR code, Writing a positive phrase, Sliding a really slow slider, etc. Your brain moves from autopilot to manual control",
             visual: (
                 <div className="w-full h-full bg-void flex flex-col items-center justify-center relative overflow-hidden rounded-xl border border-void">
                     <div className="text-xs font-mono text-mist-200 mb-4 uppercase tracking-widest flex items-center gap-2">
@@ -62,7 +62,7 @@ export default function HowItWorks() {
         {
             id: "step-3",
             title: "Release",
-            description: "Your favourite app which you once opened in miliseconds, now takes you 20-30 seconds and manual effort to use. Over time, the urge fades.",
+            description: "Your favourite app which you once opened in miliseconds, now takes you 20-30 seconds and manual effort to use. Over time, the urge fades",
             visual: (
                 <div className="w-full h-full bg-green-50 flex flex-col items-center justify-center relative overflow-hidden rounded-xl border border-void">
                     <div ref={dopamineIconRef} className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(34,197,94,0.4)] mb-4 shrink-0">

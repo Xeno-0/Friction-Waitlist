@@ -191,7 +191,7 @@ export default function Hero() {
                         className="text-void relative inline-block cursor-pointer glitch-text"
                         data-text="Loop."
                     >
-                        Loop.
+                        Loop
                     </span>
                 </h1>
 
@@ -213,7 +213,7 @@ export default function Hero() {
                             disabled={loading}
                             className="shrink-0 w-full sm:w-auto px-8 py-4 bg-void text-paper font-sans font-medium tracking-tight-custom uppercase rounded-[1rem] hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {loading ? "Booting..." : "Sign Me Up"}
+                            {loading ? "Submitting.." : "Sign Me Up"}
                         </button>
                     </div>
                 </form>

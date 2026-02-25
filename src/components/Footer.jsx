@@ -40,7 +40,7 @@ export default function Footer() {
             {/* CTA Block */}
             <div className="flex flex-col items-center justify-center flex-1 max-w-2xl mx-auto w-full mb-32 text-center">
                 <h2 className="text-3xl md:text-5xl font-sans font-bold tracking-tight-custom mb-10">
-                    Because Time is Priceless.
+                    To win the lottery, you must buy a ticket
                 </h2>
 
                 <form onSubmit={handleSubmit} className="w-full flex flex-col sm:flex-row items-center gap-3">
@@ -115,7 +115,7 @@ export default function Footer() {
 
                     {/* Status Indicator */}
                     <div className="flex items-center gap-3 bg-gray-900 border border-gray-800 rounded-full px-4 py-2 mt-auto">
-                        <span>System Status: Restoring Attention Span.</span>
+                        <span>System Status: Restoring Attention Span</span>
                         <span className="relative flex h-3 w-3">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-spark opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-spark"></span>

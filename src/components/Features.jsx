@@ -205,9 +205,9 @@ export default function Features() {
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-spark/20 blur-[60px] rounded-full pointer-events-none z-0"></div>
 
                         <div className="p-6 border-t border-gray-800 relative z-10 mt-auto bg-void">
-                            <h3 className="font-sans font-bold text-lg text-white">Every Hour Counts.</h3>
+                            <h3 className="font-sans font-bold text-lg text-white">Built to be Annoying, Intentionally</h3>
                             <p className="mt-2 text-sm font-sans text-gray-400">
-                                Instead of scrolling, you could've become a better version of yourself.
+                                Instead of scrolling, use the time to become a better version of yourself
                             </p>
                         </div>
                     </div>
