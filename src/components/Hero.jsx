@@ -189,7 +189,7 @@ export default function Hero() {
                     {/* Solid Text with Glitch */}
                     <span
                         className="text-void relative inline-block cursor-pointer glitch-text"
-                        data-text="Loop."
+                        data-text="Loop"
                     >
                         Loop
                     </span>
