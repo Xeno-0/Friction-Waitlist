@@ -1,18 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Zap, Smartphone } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import qrCodeImg from '../assets/qr-code.png';
+import breathingFlowSvg from '../assets/breathing-flow.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Features() {
     const containerRef = useRef(null);
-
-    // Typewriter State for Card 1
-    const fullText = "I will close this app and make my parents proud.";
-    const [typedText, setTypedText] = useState("");
-    const typeCursorRef = useRef(null);
 
     // Refs for Card 2
     const scanLineRef = useRef(null);
@@ -24,35 +20,6 @@ export default function Features() {
     useEffect(() => {
         let ctx = gsap.context(() => {
             // Setup ScrollTriggers for each card's animation
-
-            // Card 1: Typewriter Animation
-            ScrollTrigger.create({
-                trigger: "#card-1",
-                start: "top 70%",
-                onEnter: () => {
-                    let currentStr = "";
-                    let idx = 0;
-                    const interval = setInterval(() => {
-                        currentStr += fullText[idx];
-                        setTypedText(currentStr);
-                        idx++;
-                        if (idx === fullText.length) {
-                            clearInterval(interval);
-                            gsap.to(typeCursorRef.current, { opacity: 0, duration: 0.1 });
-                        }
-                    }, 60); // Typewriting speed
-                },
-                once: true
-            });
-
-            // Card 1: Cursor blink
-            gsap.to(typeCursorRef.current, {
-                opacity: 0,
-                repeat: -1,
-                yoyo: true,
-                duration: 0.4,
-                ease: "steps(1)"
-            });
 
             // Card 2: QR Scan Animation
             const tl2 = gsap.timeline({
@@ -77,9 +44,9 @@ export default function Features() {
                 trigger: "#card-3",
                 start: "top 80%",
                 onEnter: () => {
-                    const target = { val: 12000 };
+                    const target = { val: 0 };
                     gsap.to(target, {
-                        val: 14203,
+                        val: 67,
                         duration: 3,
                         ease: "power2.out",
                         onUpdate: () => {
@@ -104,41 +71,30 @@ export default function Features() {
                 {/* Section Header */}
                 <div className="text-center mb-8">
                     <h2 className="text-3xl md:text-5xl font-sans font-bold tracking-tight-custom text-void">
-                        Some Friction is Necessary.
+                        Some Friction is Necessary
                     </h2>
                     <p className="mt-4 font-mono text-mist-900 text-sm max-w-xl mx-auto opacity-70">
-                        For fixing the root cause of your bad habits.
+                        For fixing the root cause of your bad habits
                     </p>
                 </div>
 
                 {/* Feature Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                    {/* Card 1: Positive Reinforcement */}
-                    <div id="card-1" className="flex flex-col border border-mist rounded-[1.5rem] bg-white overflow-hidden shadow-sm">
-                        <div className="h-64 bg-gray-100 flex items-center justify-center p-6 relative">
-                            {/* Background representation of feed */}
-                            <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-30 blur-sm pointer-events-none">
-                                <div className="w-full h-32 bg-gray-300 rounded-xl"></div>
-                                <div className="w-2/3 h-4 bg-gray-300 rounded"></div>
-                                <div className="w-1/2 h-4 bg-gray-300 rounded"></div>
-                            </div>
-
-                            {/* Modal Overlay */}
-                            <div className="relative z-10 w-full bg-void text-paper rounded-[1rem] p-5 shadow-2xl border border-gray-800">
-                                <div className="flex items-center gap-2 mb-3">
-                                    <Smartphone className="w-4 h-4 text-spark" />
-                                    <span className="text-xs font-sans tracking-tight-custom uppercase text-mist">Unlock Intent</span>
-                                </div>
-                                <div className="font-mono text-xs sm:text-sm leading-relaxed min-h-[40px]">
-                                    {typedText}<span ref={typeCursorRef} className="inline-block w-2.5 h-4 bg-spark ml-1 align-middle"></span>
-                                </div>
-                            </div>
+                    {/* Card 1: Breathing Flow (animated SVG) */}
+                    <div id="card-1" className="flex flex-col border border-mist rounded-[1.5rem] bg-[#1A1A1A] overflow-hidden shadow-sm">
+                        <div className="h-64 flex items-center justify-center overflow-hidden relative">
+                            <img
+                                src={breathingFlowSvg}
+                                alt="Friction 3-state breathing flow animation"
+                                className="w-full h-full object-cover"
+                                style={{ objectPosition: '50% 42%' }}
+                            />
                         </div>
-                        <div className="p-6 border-t border-mist">
-                            <h3 className="font-sans font-bold text-lg text-void">Positive Reinforcement</h3>
-                            <p className="mt-2 text-sm font-sans text-gray-500">
-                                Rewire your brain completely. One affirmation at a time.
+                        <div className="p-6 border-t border-gray-800">
+                            <h3 className="font-sans font-bold text-lg text-white">Breathe Before You Scroll</h3>
+                            <p className="mt-2 text-sm font-sans text-gray-400">
+                                A short breathing exercise interrupts the reflex — giving your brain a chance to choose.
                             </p>
                         </div>
                     </div>
@@ -182,7 +138,7 @@ export default function Features() {
                             </div>
                         </div>
                         <div className="p-6 border-t border-mist">
-                            <h3 className="font-sans font-bold text-lg text-void">Intentionally Annoying</h3>
+                            <h3 className="font-sans font-bold text-lg text-void">Scan to Scroll</h3>
                             <p className="mt-2 text-sm font-sans text-gray-500">
                                 Want to use social media? Scan the QR code of an object lying in the other room first.
                             </p>
@@ -194,10 +150,10 @@ export default function Features() {
                         <div className="h-64 flex flex-col items-center justify-center p-6 relative z-10">
                             <Zap className="w-8 h-8 text-spark mb-6 opacity-80" />
                             <div className="text-sm font-mono text-mist uppercase tracking-widest mb-2 opacity-60">
-                                Dopamine Cycles Saved
+                                Distractions Avoided
                             </div>
                             <div className="text-5xl lg:text-6xl font-sans font-bold tracking-tight-custom text-white tabular-nums">
-                                <span ref={counterRef}>12,000</span>
+                                <span ref={counterRef}>0</span>
                             </div>
                         </div>
 
